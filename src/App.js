@@ -4,9 +4,11 @@ import Greeting from './components/Greeting';
 
 const App = () => (
   <Router>
-    <Routes>
-      <Route exact path="/" element={<Greeting />} />
-    </Routes>
+    <div className="container">
+      <Routes>
+        <Route exact path="/" element={<Greeting />} />
+      </Routes>
+    </div>
   </Router>
 );
 

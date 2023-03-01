@@ -15,7 +15,7 @@ const Greetings = () => {
   }
 
   return (
-    <p>{greeting.message}</p>
+    <p className="message">{greeting.message}</p>
   );
 };
 
