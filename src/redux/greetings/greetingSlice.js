@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchGreetings = createAsyncThunk('greetings/fetch', async () => {
+export const getGreetings = createAsyncThunk('greetings/fetch', async () => {
   const greetings = await fetch('http://localhost:4000/api/greetings');
   const data = await greetings.json();
   console.log(data);
@@ -19,15 +19,15 @@ const greetingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchGreetings.pending, (state) => {
+      .addCase(getGreetings.pending, (state) => {
         const newState = { ...state, loading: true };
         return newState;
       })
-      .addCase(fetchGreetings.fulfilled, (state, action) => {
+      .addCase(getGreetings.fulfilled, (state, action) => {
         const newState = { ...state, greeting: action.payload, loading: false };
         return newState;
       })
-      .addCase(fetchGreetings.rejected, (state) => {
+      .addCase(getGreetings.rejected, (state) => {
         const newState = { ...state, error: 'Error 404. Failed to fetch the greeting message', loading: false };
         return newState;
       });
